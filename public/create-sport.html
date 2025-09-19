@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Sport - Sports Scheduler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🏆 Sports Scheduler</div>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="create-session.html">Create Session</a></li>
+        <li><a href="create-sport.html" class="active">Add Sport</a></li>
+        <li><a href="report.html">Reports</a></li>
+        <li><a href="index.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="form-container">
+    <h2>Add New Sport</h2>
+    <form id="sportForm">
+      <label>Sport Name</label>
+      <input type="text" name="sportName" required>
+      <button type="submit">Create Sport</button>
+    </form>
+    <div style="margin-top:1rem;">
+      <h3>Your Sports</h3>
+      <ul id="mySports"></ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Sports Scheduler</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+  (function guard(){
+    const userRaw = localStorage.getItem('user');
+    const user = userRaw ? JSON.parse(userRaw) : null;
+    if (!user || !user.isAdmin) {
+      alert('Only admins can add sports');
+      window.location.href = 'dashboard.html';
+    }
+  })();
+  (async function loadMySports(){
+    try {
+      const res = await fetch('/sports?mine=true', { headers: { ...authHeaders() } });
+      if (!res.ok) return;
+      const data = await res.json();
+      const list = document.getElementById('mySports');
+      list.innerHTML = data.length ? data.map(s => `<li>${s.name}</li>`).join('') : '<li>No sports yet.</li>';
+    } catch (e) {}
+  })();
+  </script>
+</body>
+</html>

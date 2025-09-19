@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Sports Scheduler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🏆 Sports Scheduler</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html" class="active">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="form-container">
+    <h2>Sign Up</h2>
+    <form id="registerForm">
+      <label>Name</label>
+      <input type="text" name="name" required>
+      <label>Email</label>
+      <input type="email" name="email" required>
+      <label>Password</label>
+      <input type="password" name="password" required>
+      <fieldset style="margin-top:1rem;">
+        <legend>Register as</legend>
+        <label><input type="radio" name="role" value="player" checked> Player</label>
+        <label style="margin-left:1rem;"><input type="radio" name="role" value="admin"> Admin</label>
+      </fieldset>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+
+  <footer>
+    <p>© 2025 Sports Scheduler</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

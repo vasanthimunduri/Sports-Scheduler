@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Session - Sports Scheduler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🏆 Sports Scheduler</div>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="create-session.html" class="active">Create Session</a></li>
+        <li><a href="create-sport.html">Add Sport</a></li>
+        <li><a href="report.html">Reports</a></li>
+        <li><a href="index.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="form-container">
+    <h2>Create a Sport Session</h2>
+    <form id="sessionForm">
+      <label>Sport</label>
+      <select name="sport" required>
+        <option value="">-- Select Sport --</option>
+      </select>
+
+      <label>Date</label>
+      <input type="date" name="date" required>
+
+      <label>Time</label>
+      <input type="time" name="time" required>
+
+      <label>Venue</label>
+      <input type="text" name="venue" required>
+
+      <label>Team Players</label>
+      <input type="text" name="players" placeholder="Player1, Player2">
+
+      <label>Looking for (No. of Players)</label>
+      <input type="number" name="neededPlayers" min="1" required>
+
+      <button type="submit">Create Session</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>© 2025 Sports Scheduler</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    // Require login only
+    (function guard(){
+      const userRaw = localStorage.getItem('user');
+      const user = userRaw ? JSON.parse(userRaw) : null;
+      if (!user) {
+        alert('Please login first');
+        window.location.href = 'login.html';
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Sports Scheduler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🏆 Sports Scheduler</div>
+    <nav>
+      <ul>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="create-session.html">Create Session</a></li>
+        <li><a href="create-sport.html">Add Sport</a></li>
+        <li><a href="report.html">Reports</a></li>
+        <li><a href="index.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <h2 style="text-align:center; margin-bottom:1.5rem;">Welcome to Your Dashboard</h2>
+    <div class="features">
+      <div class="card">
+        <h3>📅 Your Created Sessions</h3>
+        <p>All the matches you’ve created will appear here.</p>
+        <ul id="createdSessions"></ul>
+        <div id="pendingRequests" style="margin-top:1rem;"></div>
+      </div>
+      <div class="card">
+        <h3>🤝 Sessions You Joined</h3>
+        <p>These are matches where you’re a participant.</p>
+        <ul id="joinedSessions"></ul>
+      </div>
+      <div class="card">
+        <h3>⚽ Available Sessions</h3>
+        <p>Join games created by other players.</p>
+        <ul id="availableSessions"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Sports Scheduler</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
