@@ -4,14 +4,16 @@ const path = require("path");
 const { User, Sport, Session } = require("./models");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
+// Parse HTML form posts (application/x-www-form-urlencoded)
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // Serve HTML, CSS, JS
 
-// ✅ Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/sportsScheduler", {
+// ✅ Connect to MongoDB (use env var in production, fallback to local dev)
+mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sportsScheduler", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -47,6 +49,7 @@ app.post("/register", async (req, res) => {
     await newUser.save();
     res.json({ message: "User registered successfully!", user: { id: newUser._id, name: newUser.name, email: newUser.email, isAdmin: newUser.isAdmin } });
   } catch (err) {
+    console.error("Registration error:", err);
     res.status(500).json({ error: "Registration failed" });
   }
 });
