@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // Serve HTML, CSS, JS
 
 // ✅ Connect to MongoDB (use env var in production, fallback to local dev)
-mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sportsScheduler", {
+mongoose.connect(process.env.MONGO_URI || "mongodb+srv://vasanthimunduri:vasanthi87@cluster0.wym0sxw.mongodb.net/sportsScheduler", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
